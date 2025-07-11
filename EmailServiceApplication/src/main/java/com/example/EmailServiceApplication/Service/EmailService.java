@@ -20,9 +20,9 @@ import com.example.EmailServiceApplication.Repository.EmailLogRepository;
 @Service
 public class EmailService {
 	@Autowired
-	private List<EmailProvider> emailProvider;
+	public List<EmailProvider> emailProvider;
 	@Autowired
-	private EmailLogRepository emailLogRepository;
+	public EmailLogRepository emailLogRepository;
 	
 	 private final Set<String> sentEmails = new HashSet<>();
 	 private final Map<String, List<Long>> rateLimitMap = new HashMap<>();
