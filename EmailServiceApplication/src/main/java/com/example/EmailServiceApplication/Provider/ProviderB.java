@@ -1,7 +1,9 @@
 package com.example.EmailServiceApplication.Provider;
 
-import com.example.EmailServiceApplication.Models.EmailRequest;
+import org.springframework.stereotype.Component;
 
+import com.example.EmailServiceApplication.Models.EmailRequest;
+@Component
 public class ProviderB implements EmailProvider{
 
 	@Override
