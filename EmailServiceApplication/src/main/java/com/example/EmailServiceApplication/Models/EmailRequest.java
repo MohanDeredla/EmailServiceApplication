@@ -1,16 +1,26 @@
 package com.example.EmailServiceApplication.Models;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
 @Entity
 public class EmailRequest {
-	
+	@Id
 	private String id;
+	@Column(name = "`to`")
 	private String to;
 	private String subject;
 	private String body;
 	
 	
+	public EmailRequest(String id, String to, String subject, String body) {
+		super();
+		this.id = id;
+		this.to = to;
+		this.subject = subject;
+		this.body = body;
+	}
 	public String getId() {
 		return id;
 	}

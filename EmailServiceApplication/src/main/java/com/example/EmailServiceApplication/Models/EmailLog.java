@@ -15,6 +15,28 @@ public class EmailLog {
 	private boolean success;
 	private String message;
 	private LocalDateTime sentAt;
+	
+	public EmailLog(String id, String toAddress, String subject, String body, boolean success, String message,
+			LocalDateTime sentAt) {
+		super();
+		this.id = id;
+		this.toAddress = toAddress;
+		this.subject = subject;
+		this.body = body;
+		this.success = success;
+		this.message = message;
+		this.sentAt = sentAt;
+	}
+	
+	
+
+	public EmailLog(String id2, String to, String subject2, String body2, String name, boolean b, String string,
+			LocalDateTime now) {
+		// TODO Auto-generated constructor stub
+	}
+
+
+
 	public String getId() {
 		return id;
 	}
