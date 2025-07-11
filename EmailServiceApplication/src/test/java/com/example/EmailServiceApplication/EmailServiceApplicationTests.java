@@ -53,6 +53,7 @@ class EmailServiceApplicationTests {
         verify(emailLogRepository, times(1)).save(any());
     }
 
+
     @Test
     void testSendEmail_AllProvidersFail() {
         EmailRequest request = new EmailRequest("email-002", "fail@example.com", "Fail", "No go");
@@ -86,24 +87,20 @@ class EmailServiceApplicationTests {
 
     @Test
     void testSendEmail_RateLimitExceeded() {
-        EmailRequest request = new EmailRequest("email-004", "rate@example.com", "Rate", "Limit");
-
         when(providerA.sendEmail(any())).thenReturn(true);
         when(providerA.getName()).thenReturn("ProviderA");
 
-       
         for (int i = 0; i < 5; i++) {
             EmailRequest temp = new EmailRequest("id-" + i, "rate@example.com", "Rate", "Limit");
             emailService.sendEmail(temp);
         }
 
-       
         EmailRequest blockedRequest = new EmailRequest("id-6", "rate@example.com", "Rate", "Limit");
         Map<String, Object> response = emailService.sendEmail(blockedRequest);
 
         assertFalse((Boolean) response.get("success"));
         assertEquals("Rate limit exceeded", response.get("message"));
     }
-	
+
 
 }

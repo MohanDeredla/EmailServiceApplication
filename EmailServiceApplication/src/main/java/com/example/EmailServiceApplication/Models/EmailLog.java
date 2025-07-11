@@ -1,6 +1,7 @@
 package com.example.EmailServiceApplication.Models;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -8,33 +9,29 @@ import jakarta.persistence.Id;
 @Entity
 public class EmailLog {
 	@Id
-	private String id;
+	private String id = UUID.randomUUID().toString();
 	private String toAddress;
 	private String subject;
 	private String body;
 	private boolean success;
 	private String message;
 	private LocalDateTime sentAt;
+	private String provider;
+	public EmailLog() {
+        
+    }
 	
-	public EmailLog(String id, String toAddress, String subject, String body, boolean success, String message,
-			LocalDateTime sentAt) {
-		super();
+	public EmailLog(String id, String toAddress, String subject, String body, String provider, boolean success,
+			String message, LocalDateTime sentAt) {
 		this.id = id;
 		this.toAddress = toAddress;
 		this.subject = subject;
 		this.body = body;
+		this.provider = provider;
 		this.success = success;
 		this.message = message;
 		this.sentAt = sentAt;
 	}
-	
-	
-
-	public EmailLog(String id2, String to, String subject2, String body2, String name, boolean b, String string,
-			LocalDateTime now) {
-		// TODO Auto-generated constructor stub
-	}
-
 
 
 	public String getId() {
@@ -79,11 +76,22 @@ public class EmailLog {
 	public void setSentAt(LocalDateTime sentAt) {
 		this.sentAt = sentAt;
 	}
+
+	public String getProvider() {
+		return provider;
+	}
+
+	public void setProvider(String provider) {
+		this.provider = provider;
+	}
+
 	@Override
 	public String toString() {
 		return "EmailLog [id=" + id + ", toAddress=" + toAddress + ", subject=" + subject + ", body=" + body
-				+ ", success=" + success + ", message=" + message + ", sentAt=" + sentAt + "]";
+				+ ", success=" + success + ", message=" + message + ", sentAt=" + sentAt + ", provider=" + provider
+				+ "]";
 	}
+	
 	
 	
 }
